@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    45deg,
+    hsl(32deg 100% 51%) 0%,
+    hsl(30deg 100% 58%) 9%,
+    hsl(29deg 100% 63%) 14%,
+    hsl(29deg 100% 67%) 18%,
+    hsl(29deg 100% 71%) 23%,
+    hsl(29deg 100% 74%) 27%,
+    hsl(29deg 100% 78%) 32%,
+    hsl(29deg 100% 81%) 38%,
+    hsl(29deg 100% 85%) 44%,
+    hsl(29deg 100% 89%) 52%,
+    hsl(29deg 100% 92%) 61%,
+    hsl(29deg 100% 96%) 74%,
+    hsl(0deg 0% 100%) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+
+
