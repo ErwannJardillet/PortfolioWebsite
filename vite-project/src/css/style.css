@@ -21,5 +21,24 @@ body {
   animation: gradientAnimation 5s ease infinite;
 }
 
+.centered-div {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(255, 255, 255, 0.99);
 
+  padding: 240px 600px;
+  z-index: 10; /* Au-dessus du canvas */
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
