@@ -1,42 +1,44 @@
 body {
+  background: linear-gradient(135deg, #FF9500, #61210F);
+  position: relative;
+  height: 100vh;
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(
-    45deg,
-    hsl(32deg 100% 51%) 0%,
-    hsl(30deg 100% 58%) 9%,
-    hsl(29deg 100% 63%) 14%,
-    hsl(29deg 100% 67%) 18%,
-    hsl(29deg 100% 71%) 23%,
-    hsl(29deg 100% 74%) 27%,
-    hsl(29deg 100% 78%) 32%,
-    hsl(29deg 100% 81%) 38%,
-    hsl(29deg 100% 85%) 44%,
-    hsl(29deg 100% 89%) 52%,
-    hsl(29deg 100% 92%) 61%,
-    hsl(29deg 100% 96%) 74%,
-    hsl(0deg 0% 100%) 100%
-  );
-  background-size: 200% 200%;
-  animation: gradientAnimation 5s ease infinite;
 }
 
+.circle {
+  position: absolute;
+  top: -20%;
+  left: -12%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #ffd998, #61210F);
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1; /* Assigner un z-index négatif */
+}
+
+.circle:nth-child(2) {
+  top: 30%;
+  left: 60%;
+  background: radial-gradient(circle, #61210F, #FF9500);
+  animation-duration: 12s;
+}
+
+/* Div centrée avec l'effet glassmorphism */
 .centered-div {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  
-  /* From https://css.glass */
+  transform: translate(-50%, -60%);
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(13.4px);
   -webkit-backdrop-filter: blur(13.4px);
   border: 1px solid rgba(255, 255, 255, 0.99);
-
   padding: 240px 600px;
-  z-index: 10; /* Au-dessus du canvas */
+  z-index: 10; /* Assurer que cette div reste au-dessus */
   color: #333;
   font-family: Arial, sans-serif;
   text-align: center;
