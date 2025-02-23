@@ -44,3 +44,35 @@ body {
   text-align: center;
 }
 
+.btn_container {
+  position: absolute;
+  top:83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 10;
+  
+  /* Utiliser Flexbox pour l'alignement en ligne horizontale */
+  display: flex;
+  flex-direction: row; /* Aligner les boutons en ligne */
+  align-items: center; /* Centrer verticalement */
+  justify-content: center; /* Centrer horizontalement */
+  gap: 20px; /* Espacement horizontal entre les boutons */
+}
+
+.btn_container > button {
+  padding: 30px 120px;
+  margin-left: 60px;
+  margin-right: 60px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+
+  background: rgba(255, 255, 255, 0.073);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(255, 255, 255, 0.99);
+}
+
