@@ -5,26 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three.js avec Div centrée</title>
     
-    <!-- Lien vers le fichier CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Staatliches&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="centered-div">
+    <!-- Conteneur principal avec contenu dynamique -->
+    <div class="main-container" id="mainContainer">
+        <div class="content" id="aboutMe" style="display: flex;">
+            <h2>À Propos de Moi</h2>
+            <p>Je suis développeur passionné par le web et la 3D !</p>
+        </div>
+        <div class="content" id="skills" style="display: none;">
+            <h2>Mes Compétences</h2>
+            <p>JavaScript, Three.js, HTML, CSS, React...</p>
+        </div>
+        <div class="content" id="projects" style="display: none;">
+            <h2>Mes Projets</h2>
+            <p>Découvrez mes projets récents en développement web.</p>
+        </div>
+        <div class="content" id="contact" style="display: none;">
+            <h2>Me Contacter</h2>
+            <p>Envoyez-moi un message pour collaborer !</p>
+        </div>
     </div>
 
+    <!-- Boutons d'interaction -->
     <div class="btn_container">
-        <button class="About_Me_btn"></button>
-        <button class="Skills_CV_btn"></button>
-        <button class="Projects_btn"></button>
-        <button class="Contact_btn"></button>
+        <button onclick="rotateContent('aboutMe')"><p>À propos de moi</p></button>
+        <button onclick="rotateContent('skills')"><p>Mes compétences</p></button>
+        <button onclick="rotateContent('projects')"><p>Mes projets</p></button>
+        <button onclick="rotateContent('contact')"><p>Me contacter</p></button>
     </div>
 
+    <div class="circle"></div>
+    <div class="circle"></div>
 
-    <div class="circle"></div>
-    <div class="circle"></div>
     <!-- Script Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Charger le script principal Three.js -->
-    <script src="js/main.js"></script>
+    <script src="js/3dBG.js"></script>
+
+    <!-- Script de rotation -->
+    <script src="js/rotateContent.js"></script>
 </body>
 </html>

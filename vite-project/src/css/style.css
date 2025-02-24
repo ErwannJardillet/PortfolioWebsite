@@ -1,6 +1,5 @@
 body {
   background: linear-gradient(135deg, #FF9500, #61210F);
-  position: relative;
   height: 100vh;
   margin: 0;
   overflow: hidden;
@@ -15,7 +14,7 @@ body {
   background: radial-gradient(circle, #ffd998, #61210F);
   border-radius: 50%;
   filter: blur(100px);
-  z-index: -1; /* Assigner un z-index négatif */
+  z-index: 0; /* Arrière-plan le plus bas */
 }
 
 .circle:nth-child(2) {
@@ -25,54 +24,117 @@ body {
   animation-duration: 12s;
 }
 
-/* Div centrée avec l'effet glassmorphism */
-.centered-div {
+canvas {
   position: absolute;
-  top: 45%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Devant les cercles, mais derrière les autres éléments */
+  pointer-events: none; /* Empêche de bloquer les clics sur les boutons */
+}
+
+@keyframes rotationComplete {
+  0% {
+      transform: translate(-50%, -72%) rotateY(0deg);
+  }
+  100% {
+      transform: translate(-50%, -72%) rotateY(360deg);
+  }
+}
+
+.main-container.rotate {
+  animation: rotationComplete 1s linear forwards;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
+
+
+.main-container {
+  position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  width: 65em;
+  height: 28em;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform: translate(-50%, -72%);
+  transform-origin: center center;
+
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(13.4px);
-  -webkit-backdrop-filter: blur(13.4px);
   border: 1px solid rgba(255, 255, 255, 0.99);
-  padding: 240px 600px;
-  z-index: 10; /* Assurer que cette div reste au-dessus */
   color: #333;
-  font-family: Arial, sans-serif;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2; /* Toujours devant le canvas */
+}
+
+
+
+
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn_container {
   position: absolute;
-  top:83%;
+  top: 83%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
-  z-index: 10;
-  
-  /* Utiliser Flexbox pour l'alignement en ligne horizontale */
+  z-index: 2; /* Même niveau que la fenêtre principale */
   display: flex;
-  flex-direction: row; /* Aligner les boutons en ligne */
-  align-items: center; /* Centrer verticalement */
-  justify-content: center; /* Centrer horizontalement */
-  gap: 20px; /* Espacement horizontal entre les boutons */
+  gap: 20px;
 }
 
-.btn_container > button {
-  padding: 30px 120px;
-  margin-left: 60px;
-  margin-right: 60px;
+button {
+  padding: 10px 20px;
   border: none;
   cursor: pointer;
   font-size: 16px;
-
   background: rgba(255, 255, 255, 0.073);
   border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10.4px);
-  -webkit-backdrop-filter: blur(13.4px);
   border: 1px solid rgba(255, 255, 255, 0.99);
+  transition: background 0.3s;
+  z-index: 2; /* Assurer le clic toujours possible */
+  margin: 0em 3em 0em 3em;
+  width: 15em;
 }
 
+button p {
+  color: #f7ebebbc;
+  font-family: "Staatliches", serif;
+  margin: 0;
+  font-size: 1.4em;
+  transition: all 0.3s ease;
+}
+
+button:hover p {
+  color: #f5f2f2;
+}
