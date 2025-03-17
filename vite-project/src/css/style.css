@@ -14,7 +14,8 @@ body {
   background: radial-gradient(circle, #ffd998, #61210F);
   border-radius: 50%;
   filter: blur(100px);
-  z-index: 0; /* Arrière-plan le plus bas */
+  z-index: 0;
+  /* Arrière-plan le plus bas */
 }
 
 .circle:nth-child(2) {
@@ -30,16 +31,19 @@ canvas {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Devant les cercles, mais derrière les autres éléments */
-  pointer-events: none; /* Empêche de bloquer les clics sur les boutons */
+  z-index: 1;
+  /* Devant les cercles, mais derrière les autres éléments */
+  pointer-events: none;
+  /* Empêche de bloquer les clics sur les boutons */
 }
 
 @keyframes rotationComplete {
   0% {
-      transform: translate(-50%, -72%) rotateY(0deg);
+    transform: translate(-50%, -72%) rotateY(0deg);
   }
+
   100% {
-      transform: translate(-50%, -72%) rotateY(360deg);
+    transform: translate(-50%, -72%) rotateY(360deg);
   }
 }
 
@@ -90,7 +94,8 @@ canvas {
   align-items: center;
   justify-content: center;
 
-  z-index: 2; /* Toujours devant le canvas */
+  z-index: 2;
+  /* Toujours devant le canvas */
 }
 
 
@@ -98,14 +103,15 @@ canvas {
 
 
 .content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  position: relative; /* ou rien du tout */
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* ou column selon le besoin */
   align-items: center;
   justify-content: center;
+  gap: 2rem; /* espace entre image et texte */
+  width: 100%;
+  height: 100%;
+  /* Retirez top/left et transform si vous voulez que ça reste dans la .main-container */
 }
 
 .btn_container {
@@ -113,7 +119,8 @@ canvas {
   top: 83%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2; /* Même niveau que la fenêtre principale */
+  z-index: 2;
+  /* Même niveau que la fenêtre principale */
   display: flex;
   gap: 20px;
 }
@@ -127,7 +134,8 @@ button {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.99);
   transition: background 0.3s;
-  z-index: 2; /* Assurer le clic toujours possible */
+  z-index: 2;
+  /* Assurer le clic toujours possible */
   margin: 0em 3em 0em 3em;
   width: 15em;
 }
@@ -146,30 +154,71 @@ button:hover p {
 
 button:hover {
   background: rgba(255, 255, 255, 0.182);
-} 
-
-.facePic {
-  position: absolute;
-  top: 23%;
-  left: 10%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2; /* Même niveau que la fenêtre principale */
 }
 
+#aboutMe {
+  /* position: relative inutile si on ne veut pas d’absolu dedans */
+  display: flex;              /* on active Flexbox */
+  flex-direction:column;        /* l’image et le texte côte à côte */
+  gap: 0.5em;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;             /* petite marge interne si tu veux */
+}
+
+
+.facePic, .aboutMeText {
+  transform: none;
+  width: auto;      
+  height: auto;
+}
+
+.facePic {
+  /* plus de position: absolute; */
+  /* plus de top / left / transform */
+  width: 10em;   /* ajuster la taille de la photo */
+  height: auto;
+  /* éventuellement une petite marge */
+  margin-top: 1em;
+}
+
+/* L’image en elle-même */
 .facePic img {
-  width: 10em;
-  height: 10em;
-  object-fit: cover;
+  width: 100%;  /* la div fait 10em, l'image s'adapte */
+  height: auto;
   border-radius: 16px;
-  box-shadow: none; /* pas de box-shadow par défaut */
-  transition: box-shadow 0.5s ease; /* transition de 0.5s pour le box-shadow */
+  transition: box-shadow 0.5s ease;
 }
 
 .facePic img:hover {
-  box-shadow: inset -1px -3px 12px 11px rgba(0,0,0,0.1); /* box-shadow au survol */
+  box-shadow: inset -1px -3px 12px 11px rgba(0, 0, 0, 0.1);
+  /* box-shadow au survol */
+}
+
+.aboutMeText {
+  display: flex;
+  flex-direction: row; /* Met les éléments en ligne */
+  align-items: flex-start; /* Alignement en haut */
+  justify-content: space-between; /* Répartit les blocs avec un espace égal */
+  flex-wrap: wrap; /* Permet le retour à la ligne si l'espace est insuffisant */
+  gap: 1em; /* Ajoute un petit espace entre les blocs */
+}
+
+
+.aboutMeText p {
+  font-size: 1em;
+  display: block;
+  color: #f7ebebbc;
+  font-family: "Staatliches", serif;
+  text-align: justify;
+  line-height: 1.5em;
+  margin: 0em 1em 2em 1em;
+  /* tu peux ajouter un margin si tu veux un espace autour du paragraphe */
+}
+
+.aboutMeText > * {
+  width: 30%; /* Chaque bloc prend environ 30% de la largeur totale */
+  max-width: 19em; /* Empêche que les blocs deviennent trop larges */
+  display: block;
+  text-align: justify;
 }

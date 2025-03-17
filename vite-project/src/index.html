@@ -1,42 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Three.js avec Div centrée</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Staatliches&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Conteneur principal avec contenu dynamique -->
     <div class="main-container" id="mainContainer">
         <div class="content fade" id="aboutMe" style="display: flex;">
             <div class="facePic"><img src="/vite-project/src/img/MaTete.png" alt="facePic"></div>
+            <div class="aboutMeText">
+
+                <div class="aboutMeText1">
+                    <p>Jeune développeur passionné et actuellement étudiant en informatique à l'IUT de Valence,
+                        je me spécialise dans le développement d'applications web et la conception d'interfaces
+                        utilisateurs.</p>
+                </div>
+                <div class="aboutMeText2">
+                    <p>Fort de mes
+                        expériences, allant de la refonte d’un site web dans un cadre académique à des missions
+                        professionnelles, j’ai développé
+                        de solides compétences en HTML, CSS, PHP, JavaScript et Python. Curieux et créatif, je
+                        m’intéresse
+                        également au design
+                        graphique, à la photographie et au sport, ce qui enrichit ma vision de l’innovation.</p>
+                </div>
+                <div class="aboutMeText3">
+                    <p>Toujours en
+                        quête de nouveaux défis,
+                        je souhaite mettre mon savoir-faire au service de projets stimulants et contribuer activement à
+                        leur
+                        succès.</p>
+                </div>
+            </div>
         </div>
         <div class="content fade" id="skills" style="display: none;">
-            <h2>Mes Compétences</h2>
-            <p>JavaScript, Three.js, HTML, CSS, React...</p>
+            <h2>WIP</h2>
         </div>
         <div class="content fade" id="projects" style="display: none;">
-            <h2>Mes Projets</h2>
-            <p>Découvrez mes projets récents en développement web.</p>
+            <h2>WIP</h2>
         </div>
         <div class="content fade" id="contact" style="display: none;">
-            <h2>Me Contacter</h2>
-            <p>Envoyez-moi un message pour collaborer !</p>
+            <h2>WIP</h2>
         </div>
     </div>
 
     <!-- Boutons d'interaction -->
     <div class="btn_container">
-        <button onclick="rotateContent('aboutMe')"><p>À propos de moi</p></button>
-        <button onclick="rotateContent('skills')"><p>Mes compétences</p></button>
-        <button onclick="rotateContent('projects')"><p>Mes projets</p></button>
-        <button onclick="rotateContent('contact')"><p>Me contacter</p></button>
+        <button onclick="rotateContent('aboutMe')">
+            <p>À propos de moi</p>
+        </button>
+        <button onclick="rotateContent('skills')">
+            <p>Mes compétences</p>
+        </button>
+        <button onclick="rotateContent('projects')">
+            <p>Mes projets</p>
+        </button>
+        <button onclick="rotateContent('contact')">
+            <p>Me contacter</p>
+        </button>
     </div>
 
     <div class="circle"></div>
@@ -49,4 +80,5 @@
     <!-- Script de rotation -->
     <script src="js/rotateContent.js"></script>
 </body>
+
 </html>
