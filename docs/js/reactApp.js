@@ -3,7 +3,7 @@ function AboutMe() {
     return (
         <div className="content fade" id="aboutMe" style={{ display: "flex" }}>
             <div className="facePic">
-                <img src="../img/Matete.png" alt="facePic" />
+                <img src="./img/Matete.png" alt="facePic" />
             </div>
             <div className="aboutMeText">
                 <div className="aboutMeText1">
