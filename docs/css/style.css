@@ -70,11 +70,45 @@ canvas {
 }
 
 
+.navbar {
+  position: absolute;
+  transform: translate(-50%);
+  top: 0;
+  left: 50%;
+  width: 100%;
+  display: flex;
+  z-index: 2;
 
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(255, 255, 255, 0.99);
+  color: #939393;
+
+}
+
+.navbar p {
+  font-family: "Staatliches", serif;
+  font-size: 1em;
+  margin: 0;
+  color: #f7ebeb;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  background: none;
+  z-index: 2;
+  /* Assurer le clic toujours possible */
+  margin: 0em 1em 0em 1em;
+}
 
 .main-container {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   width: 65em;
   height: 28em;
@@ -125,7 +159,7 @@ canvas {
   gap: 20px;
 }
 
-button {
+.btn_container button {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -140,7 +174,7 @@ button {
   width: 15em;
 }
 
-button p {
+.btn_container button p {
   color: #f7ebebbc;
   font-family: "Staatliches", serif;
   margin: 0;
@@ -148,11 +182,11 @@ button p {
   transition: all 0.3s ease;
 }
 
-button:hover p {
+.btn_container button:hover p {
   color: #f5f2f2;
 }
 
-button:hover {
+.btn_container button:hover {
   background: rgba(255, 255, 255, 0.182);
 }
 
@@ -188,12 +222,20 @@ button:hover {
   height: auto;
   border-radius: 16px;
   transition: box-shadow 0.5s ease;
+  margin-bottom: 3em;
 }
 
 .facePic img:hover {
   box-shadow: inset -1px -3px 12px 11px rgba(0, 0, 0, 0.1);
   /* box-shadow au survol */
 }
+
+#aboutMe {
+  width: 90%; /* Par exemple */
+  height: auto; /* Pour éviter de forcer la hauteur */
+  margin: 0 auto; /* Optionnel, si vous ne gardez pas flex sur le parent */
+}
+
 
 .aboutMeText {
   display: flex;
@@ -221,4 +263,11 @@ button:hover {
   max-width: 19em; /* Empêche que les blocs deviennent trop larges */
   display: block;
   text-align: justify;
+}
+
+.line {
+  width: 0.1em;
+  height: 5em;
+  background: #ffc260bc;
+  margin: 1em 0;
 }

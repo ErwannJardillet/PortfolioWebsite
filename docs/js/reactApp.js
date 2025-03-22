@@ -13,14 +13,15 @@ function AboutMe() {
                         utilisateurs.
                     </p>
                 </div>
+                <div className="line"></div>
                 <div className="aboutMeText2">
                     <p>
-                        Fort de mes expériences, allant de la refonte d’un site web dans un cadre académique
-                        à des missions professionnelles, j’ai développé de solides compétences en HTML, CSS, PHP,
+                        Fort de mes expériences, j’ai développé de solides compétences en HTML, CSS, PHP,
                         JavaScript et Python.
                         Curieux et créatif, je m’intéresse également au design graphique, à la photographie et au sport.
                     </p>
                 </div>
+                <div className="line"></div>
                 <div className="aboutMeText3">
                     <p>
                         Toujours en quête de nouveaux défis, je souhaite mettre mon savoir-faire au service de
