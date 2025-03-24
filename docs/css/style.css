@@ -37,74 +37,44 @@ canvas {
   /* Empêche de bloquer les clics sur les boutons */
 }
 
-@keyframes rotationComplete {
-  0% {
-    transform: translate(-50%, -72%) rotateY(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -72%) rotateY(360deg);
-  }
-}
-
-.main-container.rotate {
-  animation: rotationComplete 1s linear forwards;
-}
-
-.fade {
-  transition: opacity 0.5s ease;
-}
-
-
-.content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+body {
+  font-family: "Poppins", sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-
-.navbar {
-  position: absolute;
-  transform: translate(-50%);
-  top: 0;
-  left: 50%;
-  width: 100%;
-  display: flex;
-  z-index: 2;
-
-  background: rgba(255, 255, 255, 0.16);
-  border-radius: 0 0 16px 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2.4px);
-  border: 1px solid rgba(255, 255, 255, 0.99);
-  color: #939393;
-
-}
-
-.navbar p {
-  font-family: "Staatliches", serif;
-  font-size: 1em;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  color: #f7ebeb;
+  overflow: hidden;
 }
 
-.navbar button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  background: none;
-  z-index: 2;
-  /* Assurer le clic toujours possible */
-  margin: 0em 1em 0em 1em;
+.conteneur {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+z-index: 2;
+width: 98%;
+height: 98%;
 }
+
+.div1 { grid-area: 3 / 1 / 14 / 11; }
+.div2 { grid-area: 14 / 1 / 17 / 11; }
+.div3 { grid-area: 14 / 11 / 17 / 21; }
+.div4 { grid-area: 7 / 11 / 14 / 21; }
+.div5 { grid-area: 3 / 11 / 7 / 16; }
+.div6 { grid-area: 3 / 16 / 7 / 21; }
+.div7 { grid-area: 1 / 1 / 3 / 21; }
+
+  .conteneur div {
+   background-color: red;
+   background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20.4px);
+  border: 1px solid rgba(255, 255, 255, 0.99);
+  z-index: 2;
+  }
 
 .main-container {
   position: absolute;
@@ -120,7 +90,7 @@ canvas {
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(13.4px);
+  backdrop-filter: blur(1.4px);
   border: 1px solid rgba(255, 255, 255, 0.99);
   color: #333;
   text-align: center;
@@ -132,142 +102,15 @@ canvas {
   /* Toujours devant le canvas */
 }
 
-
-
-
-
-.content {
-  position: relative; /* ou rien du tout */
-  display: flex;
-  flex-direction: row; /* ou column selon le besoin */
-  align-items: center;
-  justify-content: center;
-  gap: 2rem; /* espace entre image et texte */
-  width: 100%;
-  height: 100%;
-  /* Retirez top/left et transform si vous voulez que ça reste dans la .main-container */
-}
-
-.btn_container {
-  position: absolute;
-  top: 83%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  /* Même niveau que la fenêtre principale */
-  display: flex;
-  gap: 20px;
-}
-
-.btn_container button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.073);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.99);
-  transition: background 0.3s;
-  z-index: 2;
-  /* Assurer le clic toujours possible */
-  margin: 0em 3em 0em 3em;
-  width: 15em;
-}
-
-.btn_container button p {
-  color: #f7ebebbc;
+.main-container h1 {
+  font-size: 2.5em;
   font-family: "Staatliches", serif;
+  color: #f7ebebbc;
   margin: 0;
-  font-size: 1.4em;
-  transition: all 0.3s ease;
-}
-
-.btn_container button:hover p {
-  color: #f5f2f2;
-}
-
-.btn_container button:hover {
-  background: rgba(255, 255, 255, 0.182);
-}
-
-#aboutMe {
-  /* position: relative inutile si on ne veut pas d’absolu dedans */
-  display: flex;              /* on active Flexbox */
-  flex-direction:column;        /* l’image et le texte côte à côte */
-  gap: 0.5em;
-  width: 100%;
-  height: 100%;
-  padding: 2rem;             /* petite marge interne si tu veux */
+  padding: 0;
 }
 
 
-.facePic, .aboutMeText {
-  transform: none;
-  width: auto;      
-  height: auto;
-}
-
-.facePic {
-  /* plus de position: absolute; */
-  /* plus de top / left / transform */
-  width: 10em;   /* ajuster la taille de la photo */
-  height: auto;
-  /* éventuellement une petite marge */
-  margin-top: 1em;
-}
-
-/* L’image en elle-même */
-.facePic img {
-  width: 100%;  /* la div fait 10em, l'image s'adapte */
-  height: auto;
-  border-radius: 16px;
-  transition: box-shadow 0.5s ease;
-  margin-bottom: 3em;
-}
-
-.facePic img:hover {
-  box-shadow: inset -1px -3px 12px 11px rgba(0, 0, 0, 0.1);
-  /* box-shadow au survol */
-}
-
-#aboutMe {
-  width: 90%; /* Par exemple */
-  height: auto; /* Pour éviter de forcer la hauteur */
-  margin: 0 auto; /* Optionnel, si vous ne gardez pas flex sur le parent */
-}
 
 
-.aboutMeText {
-  display: flex;
-  flex-direction: row; /* Met les éléments en ligne */
-  align-items: flex-start; /* Alignement en haut */
-  justify-content: space-between; /* Répartit les blocs avec un espace égal */
-  flex-wrap: wrap; /* Permet le retour à la ligne si l'espace est insuffisant */
-  gap: 1em; /* Ajoute un petit espace entre les blocs */
-}
 
-
-.aboutMeText p {
-  font-size: 1em;
-  display: block;
-  color: #f7ebebbc;
-  font-family: "Staatliches", serif;
-  text-align: justify;
-  line-height: 1.5em;
-  margin: 0em 1em 2em 1em;
-  /* tu peux ajouter un margin si tu veux un espace autour du paragraphe */
-}
-
-.aboutMeText > * {
-  width: 30%; /* Chaque bloc prend environ 30% de la largeur totale */
-  max-width: 19em; /* Empêche que les blocs deviennent trop larges */
-  display: block;
-  text-align: justify;
-}
-
-.line {
-  width: 0.1em;
-  height: 5em;
-  background: #ffc260bc;
-  margin: 1em 0;
-}

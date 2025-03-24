@@ -38,7 +38,23 @@ const spheresConfig = [
     },
     {
         size: 75,
-        position: [150, 75, -25] // Position personnalisée pour la seconde sphère
+        position: [150, 60, -25] // Position personnalisée pour la seconde sphère
+    },
+    {
+        size: 80,
+        position: [250, -90, -150] // Position personnalisée pour la troisième sphère
+    },
+    {
+        size: 85,
+        position: [-200, 100, -190] // Position personnalisée pour la quatrième sphère
+    },
+    {
+        size: 35,
+        position: [10, 10, -10] // Position personnalisée pour la cinquième sphère
+    },
+    {
+        size: 140,
+        position: [-250, -400, -1000] // Position personnalisée pour la sixième sphère
     }
 ];
 
