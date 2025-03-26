@@ -53,27 +53,54 @@ body {
   grid-template-rows: repeat(15, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
-z-index: 2;
-width: 98%;
-height: 98%;
+  z-index: 2;
+  width: 98%;
+  height: 98%;
 }
 
-.aboutMe { grid-area: 1 / 1 / 13 / 11; }
-.skills { grid-area: 13 / 1 / 17 / 11; }
-.contact { grid-area: 13 / 11 / 17 / 21; }
-.realization { grid-area: 7 / 11 / 13 / 21; }
-.education { grid-area: 1 / 11 / 7 / 16; }
-.settings { grid-area: 1 / 16 / 7 / 21; }
+.aboutMe {
+  grid-area: 1 / 1 / 13 / 11;
+}
 
-  .conteneur div {
-   background-color: red;
-   background: rgba(255, 255, 255, 0.16);
+.skills {
+  grid-area: 13 / 1 / 17 / 11;
+}
+
+.contact {
+  grid-area: 13 / 11 / 17 / 21;
+}
+
+.realization {
+  grid-area: 7 / 11 / 13 / 21;
+}
+
+.education {
+  grid-area: 1 / 11 / 7 / 16;
+}
+
+.settings {
+  grid-area: 1 / 16 / 7 / 21;
+}
+
+.conteneur div {
+  position: relative;
+  overflow: hidden;
+  background-color: red;
+  background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20.4px);
+  backdrop-filter: blur(10.4px);
   border: 1px solid rgba(255, 255, 255, 0.99);
   z-index: 2;
-  }
+  transition: transform 0.3s ease-out;
+  transform-origin: center center; /* Assure que la div se déplace depuis son centre */
+}
+
+
+.conteneur div:hover {
+  backdrop-filter: blur(40.4px);
+}
+
 
 .conteneur div p {
   font-size: 1.5em;
@@ -83,9 +110,3 @@ height: 98%;
   color: #fff;
   z-index: 2;
 }
-
-
-
-
-
-
