@@ -170,3 +170,37 @@ body {
   height: 10vw;
   margin: 0 1vw 0 1vw;
 }
+
+.skills {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 8vw;
+  animation: scroll-left 60s linear infinite;
+  min-width: 200%; /* pour que ça défile sans coupure */
+}
+
+.carousel-track img {
+  height: 9vw;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px #00000030);
+  transition: transform 0.3s ease;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.2);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
