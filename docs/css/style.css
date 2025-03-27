@@ -180,8 +180,7 @@ body {
 .carousel-track {
   display: flex;
   gap: 8vw;
-  animation: scroll-left 60s linear infinite;
-  min-width: 200%; /* pour que ça défile sans coupure */
+  animation: scroll-left 15s linear infinite;
 }
 
 .carousel-track img {
@@ -201,6 +200,6 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-51%);
   }
 }
