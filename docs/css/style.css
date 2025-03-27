@@ -82,31 +82,91 @@ body {
   grid-area: 1 / 16 / 7 / 21;
 }
 
-.conteneur div {
+.aboutMe, .contact, .settings, .education, .skills, .realization {
   position: relative;
-  overflow: hidden;
+  overflow:auto;
+  scrollbar-width: none; 
   background-color: red;
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10.4px);
-  border: 1px solid rgba(255, 255, 255, 0.99);
+  backdrop-filter: blur(5.4px);
+  border: 1px solid #fffffffc;
   z-index: 2;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, backdrop-filter 0.5s ease;
+
   transform-origin: center center; /* Assure que la div se déplace depuis son centre */
 }
 
 
-.conteneur div:hover {
+.aboutMe:hover, .contact:hover, .settings:hover, .education:hover, .skills:hover, .realization:hover {
   backdrop-filter: blur(40.4px);
 }
 
 
-.conteneur div p {
+.aboutMe, .contact, .settings, .education, .skills, .realization p {
   font-size: 1.5em;
   text-align: center;
   margin: 0;
   padding: 16px;
   color: #fff;
   z-index: 2;
+}
+
+.aboutMe .pic {
+  display: flex;
+  height: 30%;
+  margin-top: 5vw;
+  margin-top: 0%;  
+}
+
+.aboutMe .pic p {
+  font-size: 2vw;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  font-family: 'Staatliches', sans-serif;
+  margin-left: 2vw;
+  text-align: left;
+}
+
+.aboutMe img {
+  width: 10vw;
+  height: auto;
+  z-index: 1;
+  border-radius: 1vw;
+  border-color: #ffffff4c;
+  border-style: solid;
+}
+
+.aboutMe .content {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 5vw;
+  border-color: #ffffff4c;
+  border-style: solid;
+  border-radius: 1vw;
+}
+
+.aboutMe .text1, .text2 {
+  width: 45%;
+}
+
+.aboutMe p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  font-family: 'Staatliches', sans-serif;
+  text-align: justify ;
+}
+
+.aboutMe .line {
+  background-color: #ffffff4c;
+  width: 2px;
+  height: 10vw;
+  margin: 0 1vw 0 1vw;
 }
