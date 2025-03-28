@@ -3,7 +3,7 @@ function AboutMe() {
     return (
         <section id="aboutMe">
             <div class="pic">
-                <img src="/docs/img/me.png" alt="Photo de moi" />
+                <img src="docs/img/me.png" alt="Photo de moi" />
                 <p>Jardillet<br/> Erwann</p>
             </div>
             <div class="content">

@@ -12,7 +12,7 @@ function Skills() {
         <section id="skills">
             <div className="carousel-track">
                 {repeatedLogos.map((logo, index) => (
-                    <img key={index} src={`/docs/img/${logo}`} alt={logo.replace(".png", "")} />
+                    <img key={index} src={`docs/img/${logo}`} alt={logo.replace(".png", "")} />
                 ))}
             </div>
         </section>

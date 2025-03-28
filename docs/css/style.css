@@ -180,7 +180,7 @@ body {
 .carousel-track {
   display: flex;
   gap: 8vw;
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 20s linear infinite;
 }
 
 .carousel-track img {
