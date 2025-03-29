@@ -203,3 +203,23 @@ body {
     transform: translateX(-51%);
   }
 }
+
+.education {
+  position: relative;
+}
+
+
+.education .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.education .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1vw;
+}

@@ -2,6 +2,7 @@
 function Education() {
     return (
         <section id="education">
+            <div class="image"><img src="./img/iut_valence.jpg"></img></div>
         </section>
     );
 }
