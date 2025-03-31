@@ -2,7 +2,11 @@
 function Education() {
     return (
         <section id="education">
-            <div class="image"><img src="./img/iut_valence.jpg"></img></div>
+            <div class="image">
+                <div class = "left"></div>
+                <img src="./img/iut_valence.jpg"></img>
+                <div class = "right"></div>
+                </div>
         </section>
     );
 }
