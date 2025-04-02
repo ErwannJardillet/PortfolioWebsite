@@ -207,77 +207,84 @@
   .education {
     padding: 0;
   }
-
-
-  .education-content {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .education-content .image {
+  
+  .img_conteneur {
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 1vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
   }
-
-  .education-content .image img {
+  
+  /* Style de l'image */
+  .education-img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 1vw;
-    transition: transform 0.4s ease;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .education-content .image .left,
-  .education-content .image .right {
+    display: block;
     position: absolute;
     top: 0;
-    width: 20%;
-    height: 100%;
-    z-index: 2;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .education-content .image .left:hover,
-  .education-content .image .right:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .education-content .image .left {
     left: 0;
-    border-top-left-radius: 1vw;
-    border-bottom-left-radius: 1vw;
+    z-index: 1;
+    transition: filter 0.3s ease;
   }
-
-  .education-content .image .right {
+  
+  /* Zones cliquables en overlay */
+  .click-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  
+  /* Zone gauche (15%) pour l'image précédente */
+  .click-zone.left {
+    left: 0;
+    width: 15%;
+  }
+  
+  /* Zone centrale (70%) : au survol, floute l'image */
+  .click-zone.middle {
+    left: 15%;
+    width: 70%;
+  }
+  
+  /* Zone droite (15%) pour l'image suivante */
+  .click-zone.right {
     right: 0;
-    border-top-right-radius: 1vw;
-    border-bottom-right-radius: 1vw;
+    width: 15%;
   }
-
-  .arrow {
-    font-size: 5vw;
-    color: white;
+  
+  /* Appliquer le flou à l'image au survol de la zone centrale */
+  .click-zone.middle:hover ~ .education-img {
+    filter: blur(4px);
+  }
+  
+  /* Texte overlay, centré et caché par défaut */
+  .overlay-text {
+    pointer-events: none;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    user-select: none;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.5vw;
+    color: #fff;
+    font-family: 'Staatliches', sans-serif;
+    width: 100%;
+    justify-content: left;
+    text-shadow: 5px -2px 3px rgba(0,0,0,0.77);
   }
 
-  .left .arrow {
-    left: 10%;
+  .overlay-text .bottometext {
+    font-size: 1.3vw;
+    justify-content: left;
   }
-
-  .right .arrow {
-    right: 10%;
+  
+  
+  /* Au survol de la zone centrale, le texte apparaît */
+  .click-zone.middle:hover ~ .overlay-text {
+    opacity: 1;
   }
+  

@@ -1,35 +1,45 @@
 function Education() {
-    const images = [
-      "./img/iut_valence.jpg",
-      "./img/autre_image.jpg",
-      "./img/encore_une.jpg"
-    ];
-  
-    const [index, setIndex] = React.useState(0);
-  
-    const prevImage = () => {
-      setIndex((index - 1 + images.length) % images.length);
-    };
-  
-    const nextImage = () => {
-      setIndex((index + 1) % images.length);
-    };
-  
-    return (
-      <section className="education-content">
-        <div className="image">
-          <div className="left" onClick={prevImage}>
-            <span className="arrow">‹</span>
-          </div>
-          <img src={images[index]} alt="Éducation" />
-          <div className="right" onClick={nextImage}>
-            <span className="arrow">›</span>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  
-  const root = ReactDOM.createRoot(document.getElementById("education"));
-  root.render(<Education />);
-  
+  // Tableau des images
+  const images = [
+    "./img/iut_valence.jpg",
+    "./img/iut_valence.jpg",
+  ];
+
+  // Tableau des textes correspondant aux images
+  const texts = [
+    "<div class= 'toptext'>BUT Informatique – IUT de Valence (2 ans)</div> <br> <div class= 'bottometext'>Parcours A : Réalisation d’Applications : Conception, Développement, Validation </div>",
+    "<div class= 'toptext'>BUT Informatique – IUT de Valence (2 ans)</div> <br> <div class= 'bottometext'>Parcours A : Réalisation d’Applications : Conception, Développement, Validation </div>",
+  ];
+
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  const handleLeftClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handleRightClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  return (
+    <div className="img_conteneur">
+      {/* Zones cliquables */}
+      <div className="click-zone left" onClick={handleLeftClick}></div>
+      <div className="click-zone middle"></div>
+      <div className="click-zone right" onClick={handleRightClick}></div>
+
+      {/* L'image */}
+      <img className="education-img" src={images[currentIndex]} alt="Education" />
+
+      {/* Texte overlay qui change en fonction de l'image */}
+      <div
+        className="overlay-text"
+        dangerouslySetInnerHTML={{ __html: texts[currentIndex] }}
+      ></div>
+
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("education"));
+root.render(<Education />);
