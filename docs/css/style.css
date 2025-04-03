@@ -348,3 +348,80 @@ body {
   font-family: "Staatliches", sans-serif;
   text-align: justify;
 }
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact .contact_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.contact .contact_content .email  {
+  width: 20vw;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .github {
+  width: 20vw;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .email .logo {
+  width: 6vw;
+  height: 6vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .email img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact .contact_content .github .logo {
+  width: 6vw;
+  height: 6vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .github img {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.contact .contact_content .email .text p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
+  padding-left: 1vw;
+}
+
+.contact .contact_content .github .text p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
+  padding-left: 1vw;
+}
+
+
+
