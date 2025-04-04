@@ -549,7 +549,59 @@ body {
   text-align: center;
 }
 
+.settings_content .center .textEffect h1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+.settings_content .center .textEffect_selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  margin-top: 4vw;
+}
+.settings_content .center .textEffect_selector div {
+  width: 15vw;
+  height: 3vw;
+  
+  background: rgba(255, 255, 255, 0.077);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #fffffffc;
+  backdrop-filter: blur(5.4px);
+
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vw;
+
+}
+
+
+
+
+
+
+
+/* Effet 0 : Aucun (reset) */
+.textEffect-reset {
+  all: unset;
+}
+
+.letter.glow-proximity {
+  color: #fff;
+  text-shadow: 0 0 5px #fff,
+               0 0 10px #ff00ff,
+               0 0 15px #ff00ff,
+               0 0 20px #ff00ff;
+  transition: all 0.2s ease;
+}
 
 
 
