@@ -21,7 +21,7 @@ function Contact() {
   
         <div className="github" onClick={() => copyToClipboard("https://github.com/ErwannJardillet")} style={{ cursor: 'pointer' }}>
           <div className="logo">
-            <img src="./img/githubLogo.png" alt="GitHub Logo" />
+            <img src="./img/gitHubLogo.png" alt="GitHub Logo" />
           </div>
           <div className="text">
             <p>ErwannJardillet</p>
