@@ -2,19 +2,22 @@ function Settings() {
     const [pageIndex, setPageIndex] = React.useState(0);
   
     const pages = [
-      <div className="help" key="help">
+      <div className="start" key="start">
         <h1>Paramètres</h1>
-        <p>Cette page est en cours de développement.</p>
-        <p>Merci de votre compréhension.</p>
+        <img src="./img/settings.png"></img>
       </div>,
       <div className="theme" key="theme">
-        <h1>🎨 Thème</h1>
-        <p>Ici tu pourras changer le thème du portfolio.</p>
-        {/* Ajout d'un bouton plus tard */}
+        <h1>Thème</h1>
+
+        <div class = "theme_selector">
+            <div class="theme1">
+                
+            </div>
+        </div>
+
       </div>,
       <div className="language" key="langue">
-        <h1>🌐 Langue</h1>
-        <p>Choisis la langue de ton interface (à venir).</p>
+        <h1>Langue</h1>
       </div>
     ];
   
