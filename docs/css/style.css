@@ -538,6 +538,15 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 1vw;
+
+}
+
+#theme p {
+  font-size: 1.5vw;
+  color: #fff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: center;
 }
 
 

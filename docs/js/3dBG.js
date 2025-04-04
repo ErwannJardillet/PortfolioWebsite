@@ -20,49 +20,49 @@ renderer.domElement.style.left = '0';
 renderer.domElement.style.zIndex = '1'; // Assurer le canvas au-dessus des cercles
 document.body.appendChild(renderer.domElement);
 
-
-// 🎨 Définir les couleurs spécifiques (pour le gradient)
+// 🎨 Couleurs de base (par défaut) pour les sphères
+// (Ceci correspond à ton thème "sunset")
 const gradientColors = {
     start: new THREE.Color(0xf12711), // Couleur de début (brun foncé)
     end: new THREE.Color(0xf5af19)    // Couleur de fin (orange)
 };
 
-// Stocker les sphères pour appliquer la rotation
+// Stocker les sphères pour pouvoir les modifier plus tard
 const rotatingSpheres = [];
 
-// 🎯 Définir manuellement les positions des deux sphères
+// Configurer plusieurs sphères avec des positions différentes
 const spheresConfig = [
     {
         size: 70,
-        position: [-150, -40, -10] // Position personnalisée pour la première sphère
+        position: [-150, -40, -10]
     },
     {
         size: 75,
-        position: [150, 60, -25] // Position personnalisée pour la seconde sphère
+        position: [150, 60, -25]
     },
     {
         size: 80,
-        position: [250, -90, -150] // Position personnalisée pour la troisième sphère
+        position: [250, -90, -150]
     },
     {
         size: 85,
-        position: [-200, 100, -190] // Position personnalisée pour la quatrième sphère
+        position: [-200, 100, -190]
     },
     {
         size: 35,
-        position: [10, 10, -10] // Position personnalisée pour la cinquième sphère
+        position: [10, 10, -10]
     },
     {
         size: 140,
-        position: [-250, -400, -1000] // Position personnalisée pour la sixième sphère
+        position: [-250, -400, -1000]
     }
 ];
 
-// 🟢 Créer et afficher les deux sphères avec un dégradé
+// 🟢 Créer et afficher les sphères avec un dégradé
 spheresConfig.forEach(({ size, position }) => {
     const sphereGeometry = new THREE.SphereGeometry(size, 32, 32);
 
-    // 🌈 Utiliser un ShaderMaterial pour appliquer un dégradé
+    // Utiliser un ShaderMaterial pour appliquer un dégradé
     const sphereMaterial = new THREE.ShaderMaterial({
         uniforms: {
             color1: { value: gradientColors.start },
@@ -81,7 +81,7 @@ spheresConfig.forEach(({ size, position }) => {
             varying vec3 vPosition;
 
             void main() {
-                float mixFactor = (vPosition.y + 70.0) / 140.0; // Normaliser Y entre -70 et 70
+                float mixFactor = (vPosition.y + 70.0) / 140.0; 
                 gl_FragColor = vec4(mix(color1, color2, mixFactor), 1.0);
             }
         `,
@@ -91,7 +91,6 @@ spheresConfig.forEach(({ size, position }) => {
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     
     sphere.position.set(...position);
-
     sphere.castShadow = false;
     sphere.receiveShadow = false;
 
@@ -104,7 +103,7 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 0, 50);
 scene.add(directionalLight);
 
-// 💡 Ajouter une lumière ambiante douce pour un éclairage uniforme
+// 💡 Lumière ambiante douce pour un éclairage uniforme
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
@@ -129,10 +128,10 @@ function render() {
     camera.position.x += (target.x - camera.position.x) * 0.05;
     camera.position.y += (target.y - camera.position.y) * 0.05;
 
-    // 🌪️ Faire tourner les sphères lentement sur elles-mêmes
+    // 🌪️ Faire tourner les sphères en fonction de la souris
     rotatingSpheres.forEach(sphere => {
-        sphere.rotation.y = mouse.x*2; // Rotation lente sur l'axe Y
-        sphere.rotation.x = mouse.y; // Légère rotation sur l'axe X pour un effet supplémentaire
+        sphere.rotation.y = mouse.x * 2; 
+        sphere.rotation.x = mouse.y; 
     });
 
     renderer.render(scene, camera);
@@ -148,3 +147,18 @@ window.addEventListener('resize', () => {
 
 // 🎮 Démarrer le rendu
 render();
+
+/**
+ * Fonction globale permettant de mettre à jour à chaud
+ * les couleurs du dégradé des sphères, appelée depuis
+ * ton code React (dans settings.js).
+ *
+ * @param {number} startHex - Code couleur hexadécimal (ex: 0xff0000)
+ * @param {number} endHex   - Code couleur hexadécimal (ex: 0x00ff00)
+ */
+window.updateThreeTheme = function(startHex, endHex) {
+    rotatingSpheres.forEach((sphere) => {
+        sphere.material.uniforms.color1.value.setHex(startHex);
+        sphere.material.uniforms.color2.value.setHex(endHex);
+    });
+};
