@@ -1,3 +1,18 @@
+/* Apparition avec slide et fade */
+.section-appear {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
 body {
   background: linear-gradient(135deg, #ff9500, #61210f);
   height: 100vh;
@@ -563,7 +578,7 @@ body {
   width: 100%;
   height: 100%;
   flex-direction: column;
-  margin-top: 4vw;
+  margin-top: 8vw;
 }
 .settings_content .center .textEffect_selector div {
   width: 15vw;
@@ -584,24 +599,64 @@ body {
 }
 
 
-
-
-
-
-
-/* Effet 0 : Aucun (reset) */
-.textEffect-reset {
-  all: unset;
-}
-
-.letter.glow-proximity {
+/* Glow (déjà présent normalement) */
+.letter.text-glow {
   color: #fff;
   text-shadow: 0 0 5px #fff,
                0 0 10px #ff00ff,
                0 0 15px #ff00ff,
                0 0 20px #ff00ff;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
+/* Glitch */
+.letter.text-glitch {
+  animation: glitch 0.3s linear infinite;
+}
+@keyframes glitch {
+  0%   { transform: translate(0); color: #fff; }
+  20%  { transform: translate(-1px, 1px); color: #f0f; }
+  40%  { transform: translate(1px, -1px); color: #0ff; }
+  60%  { transform: translate(-1px, 1px); color: #fff; }
+  80%  { transform: translate(1px, -1px); color: #ff0; }
+  100% { transform: translate(0); }
+}
 
+/* Arc-en-ciel */
+.letter.text-rainbow {
+  animation: rainbowColor 2s linear infinite;
+}
+@keyframes rainbowColor {
+  0% { color: #ff0000; }
+  20% { color: #ffa500; }
+  40% { color: #ffff00; }
+  60% { color: #00ff00; }
+  80% { color: #0000ff; }
+  100% { color: #ff00ff; }
+}
 
+/* Matrix typing */
+.letter.text-matrix {
+  color: #0f0;
+  animation: matrixGlitch 0.6s infinite alternate;
+}
+@keyframes matrixGlitch {
+  0%   { opacity: 0.3; transform: translateY(0); }
+  50%  { opacity: 1; transform: translateY(-1px); }
+  100% { opacity: 0.5; transform: translateY(1px); }
+}
+
+/* Glow pulsé */
+.letter.text-pulse {
+  color: #fff;
+  text-shadow: 0 0 8px #00ffff;
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 2px #00ffff;
+  }
+  50% {
+    text-shadow: 0 0 50px #00ffff;
+  }
+}

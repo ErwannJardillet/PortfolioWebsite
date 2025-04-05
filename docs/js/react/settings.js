@@ -35,6 +35,16 @@ function Settings() {
       },
     };
   
+    const effectList = [
+        { label: "aucun", key: "" },
+        { label: "glow", key: "text-glow" },
+        { label: "glitch", key: "text-glitch" },
+        { label: "arc-en-ciel", key: "text-rainbow" },
+        { label: "matrix", key: "text-matrix" },
+        { label: "pulse", key: "text-pulse" }
+      ];
+      
+  
     const pages = [
       <div className="start" key="start">
         <h1>Paramètres</h1>
@@ -59,18 +69,11 @@ function Settings() {
       <div className="textEffect" key="textEffect">
         <h1>Effet du texte</h1>
         <div className="textEffect_selector">
-          <div className="textEffect0" onClick={() => handleTextEffect("")}>
-            <p>aucun</p>
-          </div>
-          <div className="textEffect4" onClick={() => handleTextEffect("proximity")}>
-            <p>effet aura</p>
-          </div>
-          <div className="textEffect2" onClick={() => handleTextEffect("text-glitch")}>
-            <p>effet 2</p>
-          </div>
-          <div className="textEffect3" onClick={() => handleTextEffect("text-zoom")}>
-            <p>effet 3</p>
-          </div>
+          {effectList.map((eff, i) => (
+            <div key={eff.key} onClick={() => handleTextEffect(eff.key)}>
+              <p>{eff.label}</p>
+            </div>
+          ))}
         </div>
       </div>,
     ];

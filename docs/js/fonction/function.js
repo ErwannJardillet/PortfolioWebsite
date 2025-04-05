@@ -1,5 +1,3 @@
-// 📦 Fichier global JS (non-modulaire) pour Babel — exposé via `window`
-
 window.wrapLettersWithSpans = function () {
     const paragraphs = document.querySelectorAll("p");
   
@@ -17,49 +15,59 @@ window.wrapLettersWithSpans = function () {
     });
   };
   
-  window.setupProximityEffect = function (radius = 100) {
-    const letters = document.querySelectorAll(".letter");
-  
-    window.addEventListener("mousemove", (e) => {
-      letters.forEach((letter) => {
-        const rect = letter.getBoundingClientRect();
-        const letterX = rect.left + rect.width / 2;
-        const letterY = rect.top + rect.height / 2;
-  
-        const dx = e.clientX - letterX;
-        const dy = e.clientY - letterY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-  
-        if (distance < radius) {
-          letter.classList.add("glow-proximity");
-        } else {
-          letter.classList.remove("glow-proximity");
-        }
-      });
-    });
-  };
+
   
   window.applyTextEffect = function (effectKey, setTextEffect) {
     setTextEffect(effectKey);
   
+    // Rewrap les lettres si nécessaire
     window.wrapLettersWithSpans();
   
-    const allLetters = document.querySelectorAll(".letter");
-    allLetters.forEach((span) => {
-      span.classList.remove(
+    // Liste de tous les effets CSS qu’on utilise
+    const allEffects = [
         "text-glow",
         "text-glitch",
-        "text-zoom",
-        "glow-proximity"
-      );
+        "text-rainbow",
+        "text-matrix",
+        "text-pulse"
+      ];
+      
+  
+    // Sélectionner toutes les lettres et retirer les anciens effets
+    const allLetters = document.querySelectorAll(".letter");
+    allLetters.forEach((span) => {
+      allEffects.forEach((cls) => span.classList.remove(cls));
     });
   
-    if (effectKey === "proximity") {
-      window.setupProximityEffect();
-    } else {
-      allLetters.forEach((span) => {
-        if (effectKey) span.classList.add(effectKey);
-      });
+    // Supprimer tous les listeners précédents (optionnel si jamais tu veux reset)
+    const oldClone = window._mouseEffectHandler;
+    if (oldClone) {
+      window.removeEventListener("mousemove", oldClone);
+      window._mouseEffectHandler = null;
+    }
+  
+    // Appliquer un effet de proximité seulement si un effet est demandé
+    if (effectKey) {
+      const handler = (e) => {
+        allLetters.forEach((letter) => {
+          const rect = letter.getBoundingClientRect();
+          const letterX = rect.left + rect.width / 2;
+          const letterY = rect.top + rect.height / 2;
+  
+          const dx = e.clientX - letterX;
+          const dy = e.clientY - letterY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+  
+          if (distance < 50) {
+            letter.classList.add(effectKey);
+          } else {
+            letter.classList.remove(effectKey);
+          }
+        });
+      };
+  
+      window._mouseEffectHandler = handler;
+      window.addEventListener("mousemove", handler);
     }
   };
   
@@ -73,4 +81,4 @@ window.wrapLettersWithSpans = function () {
       window.updateThreeTheme(chosenTheme.startColor, chosenTheme.endColor);
     }
   };
-      
+  
