@@ -1,5 +1,76 @@
+/* Apparition avec slide et fade */
+/* Apparition depuis la gauche */
+.section-appear-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Apparition depuis la droite */
+.section-appear-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Quand la section devient visible */
+.section-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+/* === Écran de chargement === */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  color: white;
+  font-family: "Staatliches", sans-serif;
+  animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+.loader-content img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+@keyframes pulseLoader {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.section-hidden {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
+
+
+
+
 body {
-  background: linear-gradient(135deg, #FF9500, #61210F);
+  background: linear-gradient(135deg, #ff9500, #61210f);
   height: 100vh;
   margin: 0;
   overflow: hidden;
@@ -11,7 +82,7 @@ body {
   left: -12%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, #ffd998, #61210F);
+  background: radial-gradient(circle, #ffd998, #61210f);
   border-radius: 50%;
   filter: blur(100px);
   z-index: 0;
@@ -21,7 +92,7 @@ body {
 .circle:nth-child(2) {
   top: 30%;
   left: 60%;
-  background: radial-gradient(circle, #61210F, #FF9500);
+  background: radial-gradient(circle, #61210f, #ff9500);
   animation-duration: 12s;
 }
 
@@ -37,237 +108,611 @@ canvas {
   /* Empêche de bloquer les clics sur les boutons */
 }
 
-@keyframes rotationComplete {
-  0% {
-    transform: translate(-50%, -72%) rotateY(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -72%) rotateY(360deg);
-  }
-}
-
-.main-container.rotate {
-  animation: rotationComplete 1s linear forwards;
-}
-
-.fade {
-  transition: opacity 0.5s ease;
-}
-
-
-.content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+body {
+  font-family: "Poppins", sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-
-.navbar {
-  position: absolute;
-  transform: translate(-50%);
-  top: 0;
-  left: 50%;
-  width: 100%;
-  display: flex;
-  z-index: 2;
-
-  background: rgba(255, 255, 255, 0.16);
-  border-radius: 0 0 16px 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2.4px);
-  border: 1px solid rgba(255, 255, 255, 0.99);
-  color: #939393;
-
-}
-
-.navbar p {
-  font-family: "Staatliches", serif;
-  font-size: 1em;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  color: #f7ebeb;
+  overflow: hidden;
 }
 
-.navbar button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  background: none;
+.conteneur {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
   z-index: 2;
-  /* Assurer le clic toujours possible */
-  margin: 0em 1em 0em 1em;
+  width: 98%;
+  height: 98%;
 }
 
-.main-container {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  width: 65em;
-  height: 28em;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transform: translate(-50%, -72%);
-  transform-origin: center center;
+.aboutMe {
+  grid-area: 1 / 1 / 13 / 11;
+}
 
+.skills {
+  grid-area: 13 / 1 / 17 / 11;
+}
+
+.contact {
+  grid-area: 13 / 11 / 17 / 21;
+}
+
+.realization {
+  grid-area: 7 / 11 / 13 / 21;
+}
+
+.education {
+  grid-area: 1 / 11 / 7 / 16;
+}
+
+.settings {
+  grid-area: 1 / 16 / 7 / 21;
+}
+
+.aboutMe,
+.contact,
+.settings,
+.education,
+.skills,
+.realization {
+  position: relative;
+  overflow: auto;
+  scrollbar-width: none;
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(13.4px);
-  border: 1px solid rgba(255, 255, 255, 0.99);
-  color: #333;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  backdrop-filter: blur(5.4px);
+  border: 1px solid #fffffffc;
   z-index: 2;
-  /* Toujours devant le canvas */
+  transition: transform 0.3s ease-out, backdrop-filter 0.5s ease;
+
+  transform-origin: center center; /* Assure que la div se déplace depuis son centre */
 }
 
+.aboutMe:hover,
+.contact:hover,
+.settings:hover,
+.education:hover,
+.skills:hover,
+.realization:hover {
+  backdrop-filter: blur(40.4px);
+}
 
+.aboutMe,
+.contact,
+.settings,
+.education,
+.skills,
+.realization p {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0;
+  padding: 16px;
+  color: #fff;
+  z-index: 2;
+}
 
-
-
-.content {
-  position: relative; /* ou rien du tout */
+.aboutMe .pic {
   display: flex;
-  flex-direction: row; /* ou column selon le besoin */
-  align-items: center;
+  height: 30%;
+  margin-top: 5vw;
+  margin-top: 0%;
+}
+
+.aboutMe .pic p {
+  font-size: 2vw;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  margin-left: 2vw;
+  text-align: left;
+}
+
+.aboutMe img {
+  width: 10vw;
+  height: auto;
+  z-index: 1;
+  border-radius: 1vw;
+  border-color: #ffffff4c;
+  border-style: solid;
+}
+
+.aboutMe .content {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  gap: 2rem; /* espace entre image et texte */
+  align-items: center;
+  height: 100%;
+  margin-top: 5vw;
+  border-color: #ffffff4c;
+  border-style: solid;
+  border-radius: 1vw;
+}
+
+.aboutMe .text1,
+.text2 {
+  width: 45%;
+}
+
+.aboutMe p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
+}
+
+.aboutMe .line {
+  background-color: #ffffff4c;
+  width: 2px;
+  height: 10vw;
+  margin: 0 1vw 0 1vw;
+}
+
+.skills {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 8vw;
+  animation: scroll-left 20s linear infinite;
+}
+
+.carousel-track img {
+  height: 9vw;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px #00000030);
+  transition: transform 0.3s ease;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.2);
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-51%);
+  }
+}
+
+.education {
+  padding: 0;
+}
+
+.img_conteneur {
+  position: relative;
   width: 100%;
   height: 100%;
-  /* Retirez top/left et transform si vous voulez que ça reste dans la .main-container */
+  overflow: hidden;
 }
 
-.btn_container {
+/* Style de l'image */
+.education-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   position: absolute;
-  top: 83%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: filter 0.3s ease;
+}
+
+/* Zones cliquables en overlay */
+.click-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* Zone gauche (15%) pour l'image précédente */
+.click-zone.left {
+  left: 0;
+  width: 15%;
+}
+
+/* Zone centrale (70%) : au survol, floute l'image */
+.click-zone.middle {
+  left: 15%;
+  width: 70%;
+}
+
+/* Zone droite (15%) pour l'image suivante */
+.click-zone.right {
+  right: 0;
+  width: 15%;
+}
+
+/* Appliquer le flou à l'image au survol de la zone centrale */
+.click-zone.middle:hover ~ .education-img {
+  filter: blur(4px);
+}
+
+/* Texte overlay, centré et caché par défaut */
+.overlay-text {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  /* Même niveau que la fenêtre principale */
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1.5vw;
+  color: #fff;
+  font-family: "Staatliches", sans-serif;
+  width: 100%;
+  justify-content: left;
+  text-shadow: 5px -2px 3px rgba(0, 0, 0, 0.77);
+}
+
+.overlay-text .bottometext {
+  font-size: 1.3vw;
+  justify-content: left;
+}
+
+/* Au survol de la zone centrale, le texte apparaît */
+.click-zone.middle:hover ~ .overlay-text {
+  opacity: 1;
+}
+
+.realization {
+  display: flex ;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.realization_content {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.btn_container button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.073);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.99);
-  transition: background 0.3s;
+.realization .img_link {
+  width: 22vw;
+  height: 15vw;
+  margin-left: 0.7vw;
+  border-radius: 1vw;
+  border-color: #ffffff4c;
+  border-style: solid;
+  overflow: hidden;
+}
+
+.realization .img_link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.realization .text_area {
+  width: 24vw;
+  height: 8vw;
+  margin-left: 0.4vw;
+}
+
+.realization .text_area p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #ffffff;
   z-index: 2;
-  /* Assurer le clic toujours possible */
-  margin: 0em 3em 0em 3em;
-  width: 15em;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
 }
 
-.btn_container button p {
-  color: #f7ebebbc;
-  font-family: "Staatliches", serif;
-  margin: 0;
-  font-size: 1.4em;
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact .contact_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.contact .contact_content .email  {
+  width: 20vw;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .github {
+  width: 20vw;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .email .logo {
+  width: 6vw;
+  height: 6vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .email img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.contact .contact_content .github .logo {
+  width: 6vw;
+  height: 6vw;
+  display: flex;
+  align-items: center;
+}
+
+.contact .contact_content .github img {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.contact .contact_content .email .text p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
+  padding-left: 1vw;
+}
+
+.contact .contact_content .github .text p {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: justify;
+  padding-left: 1vw;
+}
+
+.settings {
+  padding: 0;
+  overflow: hidden;
+}
+
+.settings_content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.settings_content .left {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings_content .right {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings_content .left p, .settings_content .right p{
+  font-size: 2vw;
+}
+
+.settings_content .center {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.settings_content .center h1 {
+  font-size: 2vw;
+  color: #fff;
+  margin-bottom: 1vw;
+}
+
+.settings_content .center p {
+  font-size: 1.2vw;
+  color: #fff;
+  margin: 0.5vw 0;
+}
+
+.settings_content .left, .settings_content .right {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.settings_content .left:hover, .settings_content .right:hover {
+  transform: scale(1.2);
+}
+
+.settings_content .center {
+  font-size: 1.5vw;
+  color: #ffffff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif
+}
+
+.settings_content .center .start img {
+  width: 8vw;
+  height: 8vw;
+  padding-top: 3vw;
+}
+
+.settings_content .center .start h1 {
+    position: absolute;
+    top: 0;
+}
+
+.settings_content .center .theme h1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.theme_selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  margin-top: 8vw;
+}
+
+.theme_selector div {
+  width: 15vw;
+  height: 3vw;
+  
+  background: rgba(255, 255, 255, 0.077);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #fffffffc;
+  backdrop-filter: blur(5.4px);
+
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vw;
+
+}
+
+#theme p {
+  font-size: 1.5vw;
+  color: #fff;
+  z-index: 2;
+  font-family: "Staatliches", sans-serif;
+  text-align: center;
+}
+
+.settings_content .center .textEffect h1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.settings_content .center .textEffect_selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  margin-top: 8vw;
+}
+.settings_content .center .textEffect_selector div {
+  width: 15vw;
+  height: 3vw;
+  
+  background: rgba(255, 255, 255, 0.077);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #fffffffc;
+  backdrop-filter: blur(5.4px);
+
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vw;
+
+}
+
+
+/* Glow (déjà présent normalement) */
+.letter.text-glow {
+  color: #fff;
+  text-shadow: 0 0 5px #fff,
+               0 0 10px #ff00ff,
+               0 0 15px #ff00ff,
+               0 0 20px #ff00ff;
   transition: all 0.3s ease;
 }
 
-.btn_container button:hover p {
-  color: #f5f2f2;
+/* Glitch */
+.letter.text-glitch {
+  animation: glitch 0.3s linear infinite;
+}
+@keyframes glitch {
+  0%   { transform: translate(0); color: #fff; }
+  20%  { transform: translate(-1px, 1px); color: #f0f; }
+  40%  { transform: translate(1px, -1px); color: #0ff; }
+  60%  { transform: translate(-1px, 1px); color: #fff; }
+  80%  { transform: translate(1px, -1px); color: #ff0; }
+  100% { transform: translate(0); }
 }
 
-.btn_container button:hover {
-  background: rgba(255, 255, 255, 0.182);
+/* Arc-en-ciel */
+.letter.text-rainbow {
+  animation: rainbowColor 2s linear infinite;
+}
+@keyframes rainbowColor {
+  0% { color: #ff0000; }
+  20% { color: #ffa500; }
+  40% { color: #ffff00; }
+  60% { color: #00ff00; }
+  80% { color: #0000ff; }
+  100% { color: #ff00ff; }
 }
 
-#aboutMe {
-  /* position: relative inutile si on ne veut pas d’absolu dedans */
-  display: flex;              /* on active Flexbox */
-  flex-direction:column;        /* l’image et le texte côte à côte */
-  gap: 0.5em;
-  width: 100%;
-  height: 100%;
-  padding: 2rem;             /* petite marge interne si tu veux */
+/* Matrix typing */
+.letter.text-matrix {
+  color: #0f0;
+  animation: matrixGlitch 0.6s infinite alternate;
+}
+@keyframes matrixGlitch {
+  0%   { opacity: 0.3; transform: translateY(0); }
+  50%  { opacity: 1; transform: translateY(-1px); }
+  100% { opacity: 0.5; transform: translateY(1px); }
 }
 
-
-.facePic, .aboutMeText {
-  transform: none;
-  width: auto;      
-  height: auto;
+/* Glow pulsé */
+.letter.text-pulse {
+  color: #fff;
+  text-shadow: 0 0 8px #00ffff;
+  animation: pulseGlow 1.5s ease-in-out infinite;
 }
-
-.facePic {
-  /* plus de position: absolute; */
-  /* plus de top / left / transform */
-  width: 10em;   /* ajuster la taille de la photo */
-  height: auto;
-  /* éventuellement une petite marge */
-  margin-top: 1em;
-}
-
-/* L’image en elle-même */
-.facePic img {
-  width: 100%;  /* la div fait 10em, l'image s'adapte */
-  height: auto;
-  border-radius: 16px;
-  transition: box-shadow 0.5s ease;
-  margin-bottom: 3em;
-}
-
-.facePic img:hover {
-  box-shadow: inset -1px -3px 12px 11px rgba(0, 0, 0, 0.1);
-  /* box-shadow au survol */
-}
-
-#aboutMe {
-  width: 90%; /* Par exemple */
-  height: auto; /* Pour éviter de forcer la hauteur */
-  margin: 0 auto; /* Optionnel, si vous ne gardez pas flex sur le parent */
-}
-
-
-.aboutMeText {
-  display: flex;
-  flex-direction: row; /* Met les éléments en ligne */
-  align-items: flex-start; /* Alignement en haut */
-  justify-content: space-between; /* Répartit les blocs avec un espace égal */
-  flex-wrap: wrap; /* Permet le retour à la ligne si l'espace est insuffisant */
-  gap: 1em; /* Ajoute un petit espace entre les blocs */
-}
-
-
-.aboutMeText p {
-  font-size: 1em;
-  display: block;
-  color: #f7ebebbc;
-  font-family: "Staatliches", serif;
-  text-align: justify;
-  line-height: 1.5em;
-  margin: 0em 1em 2em 1em;
-  /* tu peux ajouter un margin si tu veux un espace autour du paragraphe */
-}
-
-.aboutMeText > * {
-  width: 30%; /* Chaque bloc prend environ 30% de la largeur totale */
-  max-width: 19em; /* Empêche que les blocs deviennent trop larges */
-  display: block;
-  text-align: justify;
-}
-
-.line {
-  width: 0.1em;
-  height: 5em;
-  background: #ffc260bc;
-  margin: 1em 0;
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 2px #00ffff;
+  }
+  50% {
+    text-shadow: 0 0 50px #00ffff;
+  }
 }

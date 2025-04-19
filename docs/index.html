@@ -1,55 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJportfolio</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js avec Div centrée</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bentham&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bentham&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<header>
-    <div class="navbar">
-        <button class="colorPalet"><p>Theme ▼</p></button>
-        <button class="textEffect"><p>Effet du texte ▼</p></button>
-    </div>
-<body>
-    <!-- Conteneur principal avec contenu dynamique -->
-    <div class="main-container" id="mainContainer">
-
-    </div>
-
-    <!-- Boutons d'interaction -->
-    <div class="btn_container">
-        <button onclick="rotateContent('aboutMe')">
-            <p>À propos de moi</p>
-        </button>
-        <button onclick="rotateContent('skills')">
-            <p>Mes compétences</p>
-        </button>
-        <button onclick="rotateContent('projects')">
-            <p>Mes projets</p>
-        </button>
-        <button onclick="rotateContent('contact')">
-            <p>Me contacter</p>
-        </button>
+  <body>
+    <div id="loader">
+      <div class="loader-content">
+        <img src="./img/settings.png" alt="Chargement..." />
+        <p>Chargement...</p>
+      </div>
     </div>
 
-    <div class="circle"></div>
-    <div class="circle"></div>
+    <div class="conteneur">
+      <div class="aboutMe section-hidden" id="aboutMe"></div>
+      <div class="skills section-hidden" id="skills"></div>
+      <div class="contact section-hidden" id="contact"></div>
+      <div class="realization section-hidden" id="realization"></div>
+      <div class="education section-hidden" id="education"></div>
+      <div class="settings section-hidden" id="settings"></div>
+    </div>
+
+    <script src="js/introAnimation.js"></script>
 
     <!-- Script Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="js/3dBG.js"></script>
-
-    <!-- Script de rotation -->
-    <script src="js/rotateContent.js"></script>
-
-
 
     <!-- Importation de React et ReactDOM via un CDN -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -57,8 +45,14 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <!-- Fichier contenant les composants React -->
-    <script type="text/babel" src="js/reactApp.js"></script>
+    <script src="js/fonction/function.js"></script>
+    <script type="text/babel" src="js/react/aboutMe.js"></script>
+    <script type="text/babel" src="js/react/skills.js"></script>
+    <script type="text/babel" src="js/react/contact.js"></script>
+    <script type="text/babel" src="js/react/realization.js"></script>
+    <script type="text/babel" src="js/react/education.js"></script>
+    <script type="text/babel" src="js/react/settings.js"></script>
 
-</body>
-
+    <script src="js/magnet.js"></script>
+  </body>
 </html>
